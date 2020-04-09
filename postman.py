@@ -130,8 +130,6 @@ def main() -> None:
     chat_id = os.getenv("TELEGRAM_TO", None)
     assert token is not None, "Please set TELEGRAM_TOKEN env"
     assert chat_id is not None, "Please set TELEGRAM_TO env"
-    logger.info(f"token: {token}")
-    logger.info(f"chat_id: {chat_id}")
     send_message(token, chat_id)
 
 
