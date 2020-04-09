@@ -1,0 +1,25 @@
+name: Post convertible boud trading message on every work day.
+on:
+  schedule:
+    # 工作时间UTC 1点
+    - cron: "0 1 * * 1,2,3,4,5"
+
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Get CB trading info
+    runs-on: ubuntu-latest
+    steps:
+      - name: get cb traing info
+        run: |
+             echo "Hello Action" > message.txt
+      - name: send default message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            $(cat message.txt)
