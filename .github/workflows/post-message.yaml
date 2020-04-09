@@ -15,10 +15,15 @@ jobs:
     steps:
       - name: get cb traing info
         run: |
-             echo "Hello Action" > message.txt
+             export OLD_MESSAGE="Hello Action"
+             echo "::set-env message=$OLD_MESSAGE"
       - name: send default message
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ $(cat message.txt) }}
+          message: ${{ env.message }}
+      - name: test get env
+        run: |
+          echo $OLD_MESSAGE
+          echo $message
