@@ -1,3 +1,4 @@
+![Post convertible boud trading message on every work day.](https://github.com/crazygit/post-cb-action/workflows/Post%20convertible%20boud%20trading%20message%20on%20every%20work%20day./badge.svg?branch=master&event=push)
 ## 打新债信息通知机器人
 
 ### 环境初始化
@@ -27,8 +28,7 @@ $ TELEGRAM_TO="your_chat_id" TELEGRAM_TOKEN="yourt_bot_token" python postman.py
 
 参考: <https://stackoverflow.com/a/50661601/1957625>
 
-
-1. Invite @getidsbo or @RawDataBot to your group and get your group id in sended chat id field.
+1. Invite `@getidsbo` or `@RawDataBot` to your group and get your group id in sended chat id field.
 
         Message
         ├ message_id: 338
@@ -45,8 +45,8 @@ $ TELEGRAM_TO="your_chat_id" TELEGRAM_TOKEN="yourt_bot_token" python postman.py
         ├ date: 1544948900
         └ text: A
 2. Get from web page
-    1: Goto (https://web.telegram.org)
-    2: Goto your Gorup and Find your link of Gorup(https://web.telegram.org/#/im?p=g154513121)
-    3: Copy That number after g and put a (-) Before That -154513121
-    4: Send Your Message to Gorup bot.sendMessage(-154513121, "Hi")
-    I Tested Now and Work like a Charm
+    1. Goto (https://web.telegram.org)
+    2. Goto your Gorup and Find your link of Gorup(https://web.telegram.org/#/im?p=g154513121)
+    3. Copy That number after g and put a (-) Before That -154513121
+    4. Send Your Message to Gorup bot.sendMessage(-154513121, "Hi")
+
