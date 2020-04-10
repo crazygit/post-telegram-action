@@ -50,3 +50,4 @@ $ TELEGRAM_TO="your_chat_id" TELEGRAM_TOKEN="yourt_bot_token" python postman.py
     3. Copy That number after g and put a (-) Before That -154513121
     4. Send Your Message to Gorup bot.sendMessage(-154513121, "Hi")
 
+3. If you use channel id, Don't forget add '@' symbole before it.
