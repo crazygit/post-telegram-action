@@ -18,13 +18,13 @@ jobs:
         with:
           ref: master
           fetch-depth: 1
+
       - name: Set up Python 3.x
         uses: actions/setup-python@v1
         with:
           python-version: "3.7" # Semantic version range syntax or exact version of a Python version
           architecture: "x64" # Optional - x64 or x86, defaults to x64
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+
       - name: Cache pip
         uses: actions/cache@v1
         with:
@@ -34,13 +34,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
             ${{ runner.os }}-
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
       - name: Send Message
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
         run: |
-          python postman.py
+          python main.py cb ${{ secrets.TELEGRAM_CB_BOT_TOKEN }} ${{ secrets.TELEGRAM_TEST_GROUP_ID }}

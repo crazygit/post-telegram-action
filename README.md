@@ -1,27 +1,10 @@
-![Post convertible boud trading message on every work day.](https://github.com/crazygit/post-cb-action/workflows/Post%20convertible%20boud%20trading%20message%20on%20every%20work%20day./badge.svg?branch=master&event=push)
-## 打新债信息通知机器人
+## Telegam频道消息发布
 
-### 环境初始化
+### Telegram频道
 
-```bash
-$ python -V
-Python 3.7.0
-
-# 安装依赖
-$ pip install -r requirements.txt
-
-# 运行服务,需要替换自己的chat_id和bot_token
-$ TELEGRAM_TO="your_chat_id" TELEGRAM_TOKEN="yourt_bot_token" python postman.py
-```
-
-### 数据来源
-
-* [集思录](https://www.jisilu.cn/data/cbnew/#pre)
-
-
-### Telegram Channel
-
-<https://t.me/cbnew>
+* 财经资讯7x24: <https://t.me/livenews_7x24>
+* 币圈资讯7x24:  <https://t.me/dc_news_7x24>
+* 可转债打新: <https://t.me/cbnew>
 
 
 ### 如何获取chat_id
