@@ -1,0 +1,46 @@
+name: Post Fiance and Digital Currency News every 5 minutes
+on:
+  schedule:
+    # 每五分钟执行一次
+    - cron: "*/5 * * * *"
+
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Get Fiance and Digital Currency News
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          fetch-depth: 1
+
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7" # Semantic version range syntax or exact version of a Python version
+          architecture: "x64" # Optional - x64 or x86, defaults to x64
+
+      - name: Cache pip
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/pip # This path is specific to Ubuntu
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Send Message
+        run: |
+          python main.py finance ${{ secrets.TELEGRAM_FINANCE_BOT_TOKEN }} ${{ secrets.TELEGRAM_TEST_GROUP_ID }} -i 300
+          python main.py dc ${{ secrets.TELEGRAM_DC_BOT_TOKEN }} ${{ secrets.TELEGRAM_TEST_GROUP_ID }} -i 300
