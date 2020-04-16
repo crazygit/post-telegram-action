@@ -4,9 +4,9 @@ on:
     # 每五分钟执行一次
     - cron: "*/5 * * * *"
 
-  push:
-    branches:
-      - master
+#  push:
+#    branches:
+#      - master
 
 jobs:
   build:
@@ -42,5 +42,5 @@ jobs:
 
       - name: Send Message
         run: |
-          python main.py finance ${{ secrets.TELEGRAM_FINANCE_BOT_TOKEN }} ${{ secrets.TELEGRAM_TEST_GROUP_ID }} -i 300
-          python main.py dc ${{ secrets.TELEGRAM_DC_BOT_TOKEN }} ${{ secrets.TELEGRAM_TEST_GROUP_ID }} -i 300
+          python main.py finance ${{ secrets.TELEGRAM_FINANCE_BOT_TOKEN }} ${{ secrets.TELEGRAM_FINANCE_CHANNEL }} -i 300
+          python main.py dc ${{ secrets.TELEGRAM_DC_BOT_TOKEN }} ${{ secrets.TELEGRAM_DC_CHANNEL }} -i 300

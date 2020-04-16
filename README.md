@@ -1,4 +1,9 @@
+![Post Fiance and Digital Currency News every 5 minutes](https://github.com/crazygit/post-telegram-action/workflows/Post%20Fiance%20and%20Digital%20Currency%20News%20every%205%20minutes/badge.svg)
+![Post convertible boud trading message on every work day.](https://github.com/crazygit/post-telegram-action/workflows/Post%20convertible%20boud%20trading%20message%20on%20every%20work%20day./badge.svg)
+
 ## Telegam频道消息发布
+
+
 
 ### Telegram频道
 
@@ -34,3 +39,9 @@
     4. Send Your Message to Gorup bot.sendMessage(-154513121, "Hi")
 
 3. If you use channel id, Don't forget add '@' symbole before it.
+
+
+## 鸣谢
+
+**感谢`Github action`的免费支持**
+**感谢Telegram**

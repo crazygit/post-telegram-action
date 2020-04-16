@@ -4,9 +4,9 @@ on:
     # 工作时间UTC 1点
     - cron: "0 1 * * 1,2,3,4,5"
 
-  push:
-    branches:
-      - master
+#  push:
+#    branches:
+#      - master
 
 jobs:
   build:
@@ -42,4 +42,4 @@ jobs:
 
       - name: Send Message
         run: |
-          python main.py cb ${{ secrets.TELEGRAM_CB_BOT_TOKEN }} ${{ secrets.TELEGRAM_TEST_GROUP_ID }}
+          python main.py cb ${{ secrets.TELEGRAM_CB_BOT_TOKEN }} ${{ secrets.TELEGRAM_CB_CHANNEL }}
