@@ -46,7 +46,7 @@ jobs:
           python main.py dc ${{ secrets.TELEGRAM_DC_BOT_TOKEN }} ${{ secrets.TELEGRAM_DC_CHANNEL }} -i 300
 
       - name: Touch change every first day of month
-        run: if [[ $(date +%d) -eq 1 ]]; then echo $(date) >> .run.log; fi
+        run: if [[ $(date +%d) -eq 1 ]]; then echo $(date) >> .keep_alive; fi
 
       - name: Auto Commit to keep Scheduled workflows alive
         uses: EndBug/add-and-commit@v7
@@ -54,4 +54,4 @@ jobs:
           author_name: crazygit
           author_email: lianglin999@gmail.com
           message: 'Auto Commit to keep Scheduled workflows alive'
-          add: .run.log
+          add: .keep_alive
