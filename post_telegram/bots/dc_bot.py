@@ -7,7 +7,7 @@ import requests
 
 from post_telegram import logger
 from post_telegram.bots import TelegramBot
-from post_telegram.bots.utils import escape_text, Message
+from post_telegram.utils.message_helper import escape_text, Message
 
 
 @dataclass(frozen=True)

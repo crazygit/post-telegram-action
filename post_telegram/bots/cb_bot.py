@@ -7,7 +7,7 @@ import requests
 
 from post_telegram import logger
 from post_telegram.bots import TelegramBot
-from post_telegram.bots.utils import format_cell, escape_text, Message
+from post_telegram.utils.message_helper import format_cell, escape_text, Message
 
 
 def get_cb_info() -> Tuple[List, List]:

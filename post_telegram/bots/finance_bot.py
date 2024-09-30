@@ -9,7 +9,9 @@ from requests.cookies import RequestsCookieJar
 
 from post_telegram import logger
 from post_telegram.bots import TelegramBot
-from post_telegram.bots.utils import escape_text, Message
+from post_telegram.utils.message_helper import escape_text, Message
+
+from post_telegram.utils.cookie_helper import get_cookies_with_twice_requests
 
 
 @dataclass(frozen=True)
@@ -37,11 +39,9 @@ class FinanceNews:
 
 class FinanceBot(TelegramBot):
     requests_headers = {
-        "User-Agent": "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:70.0) Gecko/20100101 Firefox/70.0",
-        "X-Requested-With": "XMLHttpRequest",
-        "Referer": "https://xueqiu.com/today/",
-        "Accept": "application/json, text/javascript, */*; q=0.01",
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "Referer": "https://xueqiu.com",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
     }
 
@@ -87,7 +87,4 @@ class FinanceBot(TelegramBot):
 
     @classmethod
     def get_cookie(cls) -> RequestsCookieJar:
-        logger.info("get cookies")
-        url = "https://xueqiu.com/?category=livenews"
-        response = requests.get(url, headers=cls.requests_headers)
-        return response.cookies
+        return get_cookies_with_twice_requests("https://xueqiu.com")

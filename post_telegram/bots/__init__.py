@@ -5,7 +5,7 @@ from typing import List, Optional
 import requests
 
 from post_telegram import logger
-from post_telegram.bots.utils import Message
+from post_telegram.utils.message_helper import Message
 
 
 class TelegramBot:
