@@ -18,7 +18,7 @@ jobs:
       - name: Install Chromium
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser=133.0.6943.141
+          sudo apt-get install -y chromium-browser
       - name: Checkout
         uses: actions/checkout@v4
         with:
