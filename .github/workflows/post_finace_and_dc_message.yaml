@@ -18,7 +18,7 @@ jobs:
       - name: Install Chromium
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser
+          sudo apt-get install -y chromium-browser=133.0.6943.141
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -27,16 +27,16 @@ jobs:
       - name: Set up Python 3.x
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
           architecture: "x64" # Optional - x64 or x86, defaults to x64
 
       - name: Cache pip
         uses: actions/cache@v4
         with:
-            path: ~/.cache/pip
-            key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-            restore-keys: |
-              ${{ runner.os }}-pip-
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: |
@@ -55,5 +55,5 @@ jobs:
         with:
           author_name: crazygit
           author_email: lianglin999@gmail.com
-          message: 'Auto Commit to keep Scheduled workflows alive'
+          message: "Auto Commit to keep Scheduled workflows alive"
           add: .keep_alive
