@@ -19,7 +19,7 @@ def get_chrome_driver() -> WebDriver:
     options = Options()
     options.add_argument('--headless=new')
     return webdriver.Chrome(
-        service=ChromeService(ChromeDriverManager(chrome_type=chrome_type, driver_version="133.0.6943.141").install()),
+        service=ChromeService(ChromeDriverManager(chrome_type=chrome_type).install()),
         options=options
     )
 
