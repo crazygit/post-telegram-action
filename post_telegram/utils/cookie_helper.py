@@ -19,7 +19,9 @@ def get_chrome_driver() -> WebDriver:
     options = Options()
     options.add_argument('--headless=new')
     return webdriver.Chrome(
-        service=ChromeService(ChromeDriverManager(chrome_type=chrome_type).install()),
+        # 从这里可以下载对应版本的chromedriver及查看版本信息
+        # https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json
+        service=ChromeService(ChromeDriverManager(chrome_type=chrome_type, driver_version="137.0.7151.68").install()),
         options=options
     )
 
