@@ -21,7 +21,7 @@ def get_chrome_driver() -> WebDriver:
     return webdriver.Chrome(
         # 从这里可以下载对应版本的chromedriver及查看版本信息
         # https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json
-        service=ChromeService(ChromeDriverManager(chrome_type=chrome_type, driver_version="137.0.7151.68").install()),
+        service=ChromeService(ChromeDriverManager(chrome_type=chrome_type, driver_version="136.0.7103.113").install()),
         options=options
     )
 
