@@ -15,14 +15,24 @@ import os
 # 本地调试默认使用google-chrome浏览器，github中使用chromium浏览器
 def get_chrome_driver() -> WebDriver:
     chrome_type = os.getenv("CHROME_TYPE", default="google-chrome")
-    chrome_type = ChromeType.CHROMIUM if chrome_type == "chromium" else ChromeType.GOOGLE
+    chrome_type = (
+        ChromeType.CHROMIUM if chrome_type == "chromium" else ChromeType.GOOGLE
+    )
     options = Options()
-    options.add_argument('--headless=new')
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--disable-browser-side-navigation")
     return webdriver.Chrome(
         # 从这里可以下载对应版本的chromedriver及查看版本信息
         # https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json
-        service=ChromeService(ChromeDriverManager(chrome_type=chrome_type, driver_version="139.0.7258.138").install()),
-        options=options
+        service=ChromeService(
+            ChromeDriverManager(
+                chrome_type=chrome_type, driver_version="139.0.7258.138"
+            ).install()
+        ),
+        options=options,
     )
 
 
@@ -41,5 +51,5 @@ def get_cookies_with_twice_requests(url: str) -> RequestsCookieJar:
     cookie_dict = {}
     for cookie in driver.get_cookies():
         logger.info(f"{cookie.get('name')} = {cookie.get('value')}")
-        cookie_dict[cookie.get('name')] = cookie.get('value')
+        cookie_dict[cookie.get("name")] = cookie.get("value")
     return requests.utils.cookiejar_from_dict(cookie_dict)

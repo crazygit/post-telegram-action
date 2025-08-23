@@ -42,6 +42,14 @@
 3. If you use channel id, Don't forget add '@' symbole before it.
 
 
+
+## 运行
+
+```
+$ uv sync
+$ uv run main.py finance -t <telegram_token> -c <telegramd_chat_id> -i 300
+```
+
 ## 鸣谢
 
 **感谢`Github action`的免费支持**

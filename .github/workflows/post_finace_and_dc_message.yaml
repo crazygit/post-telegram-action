@@ -20,7 +20,7 @@ jobs:
       #  run: |
       #    sudo apt-get update
       #    sudo apt-get install -y chromium-browser=2:1snap1-0ubuntu2
-      - name: In$tall Google Chrome
+      - name: Install Google Chrome
         run: |
           sudo apt-get update \
           && sudo apt-get install -y --no-install-recommends wget gnupg apt-transport-https ca-certificates \
@@ -28,6 +28,7 @@ jobs:
           && sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/google-archive-keyring.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list' \
           && sudo apt-get update \
           && sudo apt-get install -y google-chrome-stable=139.0.7258.138-1 \
+          && sudo apt-mark hold google-chrome-stable \
           && google-chrome-stable --version \
           && sudo rm -rf /var/lib/apt/lists/*
 
@@ -57,7 +58,7 @@ jobs:
 
       - name: Send Message
         run: |
-          python main.py finance ${{ secrets.TELEGRAM_FINANCE_BOT_TOKEN }} ${{ secrets.TELEGRAM_FINANCE_CHANNEL }} -i 300
+          python main.py finance -t ${{ secrets.TELEGRAM_FINANCE_BOT_TOKEN }} -c ${{ secrets.TELEGRAM_FINANCE_CHANNEL }} -i 300
 
       - name: Touch change every first day of month
         run: if [[ $(date +%d) -eq 1 ]] && ! $(grep -q "$(date +'%F')" .keep_alive); then echo $(date +'%F') >> .keep_alive; fi
