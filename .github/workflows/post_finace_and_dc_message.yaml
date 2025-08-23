@@ -8,17 +8,28 @@ on:
 #    branches:
 #      - master
 env:
-  CHROME_TYPE: chromium
+  # CHROME_TYPE: chromium
+  CHROME_TYPE: google-chrome
 
 jobs:
   build:
     name: Get Fiance and Digital Currency News
     runs-on: ubuntu-24.04
     steps:
-      - name: Install Chromium
+      #- name: Install Chromium
+      #  run: |
+      #    sudo apt-get update
+      #    sudo apt-get install -y chromium-browser=2:1snap1-0ubuntu2
+      - name: In$tall Google Chrome
         run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser=2:1snap1-0ubuntu2
+          apt-get update \
+          && apt-get install -y --no-install-recommends wget gnupg apt-transport-https ca-certificates \
+          && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /etc/apt/keyrings/google-archive-keyring.gpg \
+          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/google-archive-keyring.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+          && apt-get update \
+          && apt-get install -y google-chrome-stable=139.0.7258.138-1 \
+          && rm -rf /var/lib/apt/lists/*
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
