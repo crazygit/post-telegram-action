@@ -9,7 +9,7 @@ RUN apt-get update \
     && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub |  gpg --dearmor -o /etc/apt/keyrings/google-archive-keyring.gpg \
     && sh -c 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/google-archive-keyring.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list' \
     && apt-get update \
-    && apt-get install -y google-chrome-stable=139.0.7258.138-1 \
+    && apt-get install -y google-chrome-stable \
     && apt-mark hold google-chrome-stable \
     && google-chrome-stable --version \
     && rm -rf /var/lib/apt/lists/*
